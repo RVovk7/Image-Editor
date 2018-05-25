@@ -1,0 +1,91 @@
+void saveImage()
+        {
+            if (opened)
+            {
+                SaveFileDialog sfd = new SaveFileDialog(); 
+                sfd.Filter = "Images|*.png;*.bmp;*.jpg";
+                ImageFormat format = ImageFormat.Png;
+                if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string ext = Path.GetExtension(sfd.FileName);
+                    switch (ext)
+                    {
+                        case ".jpg":
+                            format = ImageFormat.Jpeg;
+                            break;
+                        case ".bmp":
+                            format = ImageFormat.Bmp;
+                            break;
+                    }
+                    pictureBox1.Image.Save(sfd.FileName, format);
+                }
+            }
+            else { MessageBox.Show("Error. Завантажте для початку зображення."); }
+        }
+        void grayscale()
+        {
+            if (!opened)
+            {
+                MessageBox.Show("Для початку відкрийте зображення (jpg,bmp,png)");
+            }
+            else
+            {
+                Image img = pictureBox1.Image;                             
+                Bitmap bmpInverted = new Bitmap(img.Width, img.Height);   
+                                                                      
+                ImageAttributes ia = new ImageAttributes();            
+                ColorMatrix cmPicture = new ColorMatrix(new float[][]   
+                {
+                    new float[]{0.299f, 0.299f, 0.299f, 0, 0},
+                    new float[]{0.587f, 0.587f, 0.587f, 0, 0},
+                    new float[]{0.114f, 0.114f, 0.114f, 0, 0},
+                    new float[]{0, 0, 0, 1, 0},
+                    new float[]{0, 0, 0, 0, 0}
+                });
+                ia.SetColorMatrix(cmPicture);          
+                Graphics g = Graphics.FromImage(bmpInverted);   
+                g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+                g.Dispose();                            
+                pictureBox1.Image = bmpInverted;
+            }
+        }
+        void fog()
+        {
+
+            if (!opened)
+            {
+                MessageBox.Show("Для початку відкрийте зображення (jpg,bmp,png)");
+            }
+            else
+            {
+
+
+                Image img = pictureBox1.Image;                             
+                Bitmap bmpInverted = new Bitmap(img.Width, img.Height);   
+                ImageAttributes ia = new ImageAttributes();                
+                ColorMatrix cmPicture = new ColorMatrix(new float[][]   
+                {
+                    new float[]{1+0.3f, 0, 0, 0, 0},
+            new float[]{0, 1+0.7f, 0, 0, 0},
+            new float[]{0, 0, 1+1.3f, 0, 0},
+            new float[]{0, 0, 0, 1, 0},
+            new float[]{0, 0, 0, 0, 1}
+                });
+                ia.SetColorMatrix(cmPicture);           
+                Graphics g = Graphics.FromImage(bmpInverted);  
+
+                g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+                g.Dispose();
+                pictureBox1.Image = bmpInverted;
+            }
+        }
+        void flash()
+        {
+            if (!opened)
+            {
+                MessageBox.Show("Для початку відкрийте зображення (jpg,bmp,png)");
+            }
+            else
+            {
+                Image img = pictureBox1.Image;                            
+                Bitmap bmpInverted = new Bitmap(img.Width, img.Height);

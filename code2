@@ -1,0 +1,157 @@
+Image img = pictureBox1.Image;                            
+                Bitmap bmpInverted = new Bitmap(img.Width, img.Height);  
+                ImageAttributes ia = new ImageAttributes();              
+                ColorMatrix cmPicture = new ColorMatrix(new float[][]     
+                {
+                    new float[]{1,0,0,0,0},
+                    new float[]{0,1,0,0,0},
+                    new float[]{0,0,1,0,0},
+                    new float[]{0, 0, 0, 1, 0},
+                    new float[]{0, 0, 1, 0, 1}
+                });
+                ia.SetColorMatrix(cmPicture);       
+                Graphics g = Graphics.FromImage(bmpInverted);
+                g.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+                g.Dispose();                           
+                pictureBox1.Image = bmpInverted;
+
+            }
+        }
+
+        void reload()
+        {
+            if (!opened)
+            {
+                // MessageBox.Show("Для початку відкрийте зображення (jpg,bmp,png)");
+            }
+            else
+            {
+                if (opened)
+                {
+                    file = Image.FromFile(openFileDialog1.FileName);
+                    pictureBox1.Image = file;
+                    opened = true;
+                }
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            reload();
+            grayscale();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            reload();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            openImage();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            saveImage();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            reload();
+            redscale();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            reload();
+            Winter();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+        }
+        private void pictureBox1_DragOver(object sender, DragEventArgs e)
+        { 
+        }
+        private void trackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            hue();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            hue();
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar3_Scroll_1(object sender, EventArgs e)
+        {
+            hue();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            saveImage();
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            openImage();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            reload();
+            fog();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            reload();
+            grayscale();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            reload();
+            Winter();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            reload();
+            redscale();
+        }

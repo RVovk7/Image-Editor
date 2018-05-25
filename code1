@@ -1,0 +1,69 @@
+private void button5_Click_1(object sender, EventArgs e)
+        {
+            greenbar.Value = 0;
+            redbar.Value = 0;
+            bluebar.Value = 0;
+            greenvalue.Text = "0";
+            reload();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            openImage();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            saveImage();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            reload();
+            flash();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            reload();
+            Frozen();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            reload();
+            filter2();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            reload();
+            filter3();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            reload();
+            filter1();
+        }
+    }
+}
